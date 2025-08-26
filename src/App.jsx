@@ -2,19 +2,21 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  //const for images and counter for randomizer
+  //const for images + timer + counter for randomizer
   const [image, setImage] = useState(null);
   const [count, setCount] = useState(0);
   const [time, setTime] = useState(null);
 
-  const fetchImage = async () => {
+
+  async function fetchImage () {
 
     try{
       //API initialization + counter used for randomness 
-    const url_API = `https://picsum.photos/200?random=${count}`;
+      const url_API = `https://picsum.photos/200?random=${count}`;
       setImage(url_API);
       setCount(prev=>prev+1); //increment the counter every time the button is clicked as well
 
+      //get current time and convert it to readible text
       const time_now = new Date().toLocaleString();
       setTime(time_now);
     }
@@ -26,6 +28,7 @@ function App() {
 
   }
 
+  
   return (
     <>
     <h1> Image Generator</h1>
